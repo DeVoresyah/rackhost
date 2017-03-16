@@ -46,8 +46,7 @@ var relativeDate = function(dateString)
 };
 
 // DOM is ready
-$(function()
-{
+$(document).ready(function(){
 	// Animate navigation
 	var siteHeaderNavigationActive = false;
 	$('div.siteHeader ul.navigation li').hover(function()
