@@ -49,7 +49,7 @@ var relativeDate = function(dateString)
 $(document).ready(function(){
 	// Animate navigation
 	var siteHeaderNavigationActive = false;
-	$('div.siteHeader ul.navigation li').hover(function()
+	$('.siteHeader ul.navigation li').hover(function()
 	{
 		$(this).find('ul.dropdown').stop(true, true).hide().animate({ height: 'show' }, animationSpeed);
 	}, function()
@@ -95,17 +95,17 @@ $(document).ready(function(){
 		// Output slide switches and adapt design
 		contentSlider.css({ height: '380px' });
 		contentSlide.css({ height: '380px', overflow: 'visible' });
-		contentSlider.find('div.slide img').css({ marginTop: 0 });
-		contentSlider.find('div.center').prepend(printSwitch + '</div>');
-		contentSlider.find('div.slideSwitch div:first').addClass('active');
-		contentSlider.find('div.slideSwitch div:last').css({ marginRight: 0 });
+		contentSlider.find('.slide img').css({ marginTop: 0 });
+		contentSlider.find('.center').prepend(printSwitch + '</div>');
+		contentSlider.find('.slideSwitch div:first').addClass('active');
+		contentSlider.find('.slideSwitch div:last').css({ marginRight: 0 });
 		
 		// Create auto slider
 		var autoSlideTimer;
 		var autoSlide = function()
 		{
 			// Get active id
-			var activeId = contentSlider.find('div.slideSwitch div.active').attr('id').split('-');
+			var activeId = contentSlider.find('.slideSwitch .active').attr('id').split('-');
 			activeId = activeId[1];
 			
 			// Get next id and store it in active id
@@ -130,7 +130,7 @@ $(document).ready(function(){
 		
 		// Add event listener for click
 		var contentSliderActive = false;
-		contentSlider.delegate('div.slideSwitch div', 'click', function(event)
+		contentSlider.delegate('.slideSwitch div', 'click', function(event)
 		{
 			// Deny click on active element
 			if ($(this).is('.active'))
@@ -141,7 +141,7 @@ $(document).ready(function(){
 			// Stop current animation if still active
 			if (contentSliderActive)
 			{
-				$('div.contentSlider div.slide, div.contentSlider div.slide div.information, div.contentSlider div.slide img').stop(true, true);
+				$('.contentSlider .slide, .contentSlider .slide .information, .contentSlider .slide img').stop(true, true);
 			}
 			
 			// Set content slider active
@@ -158,14 +158,14 @@ $(document).ready(function(){
 			id = id[1];
 			
 			// Change slide and adapt design
-			$('div.contentSlider div.slideSwitch div').removeClass('active');
+			$('.contentSlider .slideSwitch div').removeClass('active');
 			$(this).addClass('active');
 			
 			// Active slide
-			var activeSlide = $('div.contentSlider .slide:visible');
+			var activeSlide = $('.contentSlider .slide:visible');
 			
 			// Animate slide change
-			activeSlide.find('div.information').animate({ marginLeft: '-420px', opacity: 0 }, 400, function()
+			activeSlide.find('.information').animate({ marginLeft: '-420px', opacity: 0 }, 400, function()
 			{
 				activeSlide.hide();
 				$(this).css({ marginLeft: 0, opacity: 1 });
@@ -193,11 +193,11 @@ $(document).ready(function(){
 		var imageLink = $(this).attr('href');
 				
 		// Put image in DOM
-		$('div.siteWrapper').prepend('<div class="siteOverlay"></div><div class="siteLoading"><div></div></div><img class="imageZoomBox" src="' + imageLink + '" alt="Zoom" /><div class="imageZoomClose"></div>');		
+		$('.siteWrapper').prepend('<div class="siteOverlay"></div><div class="siteLoading"><div></div></div><img class="imageZoomBox" src="' + imageLink + '" alt="Zoom" /><div class="imageZoomClose"></div>');		
 		
 		// Animate image box
-		$('div.siteOverlay').css({ opacity: 0 }).show().animate({ opacity: 0.9 }, animationSpeed);
-		$('div.siteLoading').animate({ opacity: 'show' }, animationSpeed);
+		$('.siteOverlay').css({ opacity: 0 }).show().animate({ opacity: 0.9 }, animationSpeed);
+		$('.siteLoading').animate({ opacity: 'show' }, animationSpeed);
 		
 		// Load the image
 		var image = $('img.imageZoomBox');
@@ -229,12 +229,12 @@ $(document).ready(function(){
 			}
 			
 			// Hide loading indicator
-			$('div.siteLoading').hide();
+			$('.siteLoading').hide();
 			
 			// Show and animate image
 			$(this).css({ width: 0, height: 0 }).animate({ opacity: 'show', width: imageWidth + 'px', height: imageHeight + 'px', marginTop: '-' + ((imageHeight / 2) + 20) + 'px', marginLeft: '-' + ((imageWidth / 2) + 20) + 'px' }, animationSpeed, function()
 			{
-				$('div.imageZoomClose').css({ marginLeft: ((imageWidth / 2) - 20) + 'px', marginTop: '-' + ((imageHeight / 2) + 20) + 'px' }).animate({ opacity: 'show' }, animationSpeed);
+				$('.imageZoomClose').css({ marginLeft: ((imageWidth / 2) - 20) + 'px', marginTop: '-' + ((imageHeight / 2) + 20) + 'px' }).animate({ opacity: 'show' }, animationSpeed);
 			})
 		});
 		
@@ -242,18 +242,18 @@ $(document).ready(function(){
 	});
 	
 	// Handle close event on overlay or imagebox
-	$('div.siteWrapper').delegate('div.siteOverlay, div.imageZoomClose, div.siteLoading', 'click', function()
+	$('.siteWrapper').delegate('.siteOverlay, .imageZoomClose, .siteLoading', 'click', function()
 	{
-		$('div.siteOverlay, img.imageZoomBox, div.imageZoomClose, div.siteLoading').animate({ opacity: 'hide' }, animationSpeed, function()
+		$('.siteOverlay, img.imageZoomBox, .imageZoomClose, .siteLoading').animate({ opacity: 'hide' }, animationSpeed, function()
 		{
 			$(this).remove();
 		});
 	});
 	
 	// Generate tab navigation
-	if ($('div.tabWrapper').length != 0)
+	if ($('.tabWrapper').length != 0)
 	{	
-		$('div.tabWrapper').each(function()
+		$('.tabWrapper').each(function()
 		{
 			// Prepare tab output
 			var printTabs = '<ul class="tabs">';
@@ -394,7 +394,7 @@ $(document).ready(function(){
 	}
 			
 	// Animate "Back to Top"
-	$('div.siteFooterBar a.backToTop').click(function()
+	$('.siteFooterBar a.backToTop').click(function()
 	{
 		$('html, body').animate({ scrollTop: 0 }, animationSpeed);
 		return false;
