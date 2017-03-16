@@ -58,8 +58,8 @@ $(document).ready(function(){
 	});
 
 	// Render content slider
-	var contentSlider = $('div.contentSlider');
-	var contentSlide = contentSlider.find('div.slide');
+	var contentSlider = $('.contentSlider');
+	var contentSlide = contentSlider.find('.slide');
 	if (contentSlide.length > 1)
 	{
 		// Calculate slide switch element width
