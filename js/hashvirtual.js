@@ -400,18 +400,4 @@ $(function()
 		$('html, body').animate({ scrollTop: 0 }, animationSpeed);
 		return false;
 	});
-	
-var contentWrapper = new Vue({
-    el: '#vue-wrapper',
-    methods: {
-        goRegister: function (){
-			var username = checkSession("hashvirtual_ref");
-            if (username != null){
-                window.location = 'https://dashboard.hashvirtual.cloud/p/register.html?ref=' + username;
-            } else {
-                window.location = 'https://dashboard.hashvirtual.cloud/p/register.html';
-            }
-        }
-    }
-})
 });
