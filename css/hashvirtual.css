@@ -1130,7 +1130,7 @@ table .colorButton
 	width: 200px;
 	height: 60px;
 	margin: 15px 0;
-	background: transparent url("https://rawgit.com/DeVoresyah/chain/master/images/namelogo-orange.png") left center no-repeat;
+	background: transparent url(../img/logos/new-logo.png) left center no-repeat;
 }
 
 .siteHeader .navigation
